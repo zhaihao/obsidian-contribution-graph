@@ -6,6 +6,7 @@ import { ContributionGraphCreateModal } from "./view/form/GraphFormModal";
 import { mountEditButtonToCodeblock } from "./view/codeblock/CodeblockEditButtonMount";
 import { Locals } from "./i18/messages";
 import "../style/styles.css";
+import {YamlGraphConfig} from "./processor/types";
 
 export default class ContributionGraph extends Plugin {
 	async onload() {
@@ -17,7 +18,7 @@ export default class ContributionGraph extends Plugin {
 
 	onunload() {
 		// @ts-ignore
-		window.renderContributionGraph = undefined;
+		window.renderContributionGraphByYaml = undefined;
 	}
 
 	registerContextMenu() {
@@ -34,14 +35,12 @@ export default class ContributionGraph extends Plugin {
 		);
 	}
 
-	registerGlobalRenderApi() {
-		//@ts-ignore
-		window.renderContributionGraph = (
-			container: HTMLElement,
-			graphConfig: ContributionGraphConfig
-		): void => {
-			Renders.render(container, graphConfig);
-		};
+	registerGlobalRenderApi() {//@ts-ignore
+		window.renderContributionGraphByYaml = (container:HTMLElement,code:string):void => {
+			const processor = new CodeBlockProcessor();
+			const graphConfig: YamlGraphConfig = processor.loadYamlConfig(container, code);
+			processor.renderFromYaml(graphConfig, container, this.app);
+		}
 	}
 
 	registerCodeblockProcessor() {

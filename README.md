@@ -1,6 +1,9 @@
 
 ![](attachment/d20ba90e31c16a3c4d79cba9298577de.png)
 
+```shell
+git remote add upstream git@github.com:vran-dev/obsidian-contribution-graph.git
+```
 
 **English**  |  [中文文档](https://mp.weixin.qq.com/s/wI8M_C87oZAtCBjFWC8CmA)
 
@@ -49,7 +52,7 @@ Contribution Graph is a plugin for [obsidian.md](https://obsidian.md/) which cou
 - personalized style, you can configure different cell colors and fill cells with emojis.
 - use fixed date range or latest date to generate graph
 - interactive charts, you can customize cell click event, hover to show statistic data
-- simply integrate with DataviewJS, use contribution graph's api to dynamically render charts 
+- simply integrate with DataviewJS, use contribution graph's api to dynamically render charts
 
 ![](attachment/74103317de5336b5283338c56171f268.png)
 
